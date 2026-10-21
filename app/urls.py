@@ -16,13 +16,26 @@ Including another URLconf
 """
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 
 from shop import views
 
+from rest_framework.routers import DefaultRouter
+
+from shop.api import FlowerCategoryViewSet, ProductViewSet, CustomerViewSet, OrderViewSet, OrderItemViewSet, SubViewSet
+
+router = DefaultRouter()
+router.register("FlowerCategory", FlowerCategoryViewSet, basename='FlowerCategory')
+router.register("Product", ProductViewSet, basename='Product')
+router.register("Customer", CustomerViewSet, basename='Customer')
+router.register("Order", OrderViewSet, basename='Order')
+router.register("OrderItem", OrderItemViewSet, basename='OrderItem')
+router.register("Sucscription", SubViewSet, basename='Subsription')
+
 
 urlpatterns = [
-    path('', views.show_flowers),
+    path('', views.ShowFlowersView.as_view()),
     path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
 ] + static (settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
