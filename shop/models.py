@@ -28,7 +28,7 @@ class Order(models.Model):
         verbose_name_plural="Заказы"
 
     def __str__(self) -> str:
-        return self.name
+        return f"Заказ №{self.pk}"
 
 
 class SubscriptionLog(models.Model):
@@ -40,9 +40,6 @@ class SubscriptionLog(models.Model):
         verbose_name="Лог подписки"
         verbose_name_plural="Логи подписки"
 
-    def __str__(self) -> str:
-        return self.name
-
 class OrderItem(models.Model):
     order=models.ForeignKey("Order", on_delete=models.CASCADE, null=True)
     product=models.ForeignKey("Product", on_delete=models.CASCADE, null=True)
@@ -52,8 +49,9 @@ class OrderItem(models.Model):
     class Meta:
         verbose_name="Состав заказа"
         verbose_name_plural="Состав заказов"
+
     def __str__(self) -> str:
-        return self.name
+        return f"Позиция #{self.pk}"
 
 class Product(models.Model):
     name=models.TextField("Название")

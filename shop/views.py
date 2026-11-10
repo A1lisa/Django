@@ -9,8 +9,8 @@ from shop.models import Product, FlowerCategory, Order, OrderItem, SubscriptionL
 class ShowFlowersView(TemplateView):
     template_name = "shop/show_flowers.html"
 
-    def get_context_dara(self, **kwargs: Any) -> dict[str, Any]:
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context=super().get_context_data(**kwargs)
-        context["products"]=Product.objects.all()
+        context["flowers"]=Product.objects.all()
 
         return context

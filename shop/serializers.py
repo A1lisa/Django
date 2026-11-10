@@ -7,7 +7,7 @@ class FlowerCategorySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class ProductSerializer(serializers.ModelSerializer):
-    category = FlowerCategorySerializer(read_only=True)
+    #category = FlowerCategorySerializer()#(read_only=True)
     
     class Meta:
         model = Product
@@ -19,20 +19,20 @@ class CustomerSerializer(serializers.ModelSerializer):
             fields = ['id', 'full_name', 'email', 'phone', 'address']
 
 class OrderSerializer(serializers.ModelSerializer):
-    customer=CustomerSerializer(read_only=True)
+    #customer=CustomerSerializer(read_only=True)
     class Meta:
             model = Order
             fields = "__all__"
 
 class OrderItemSerializer(serializers.ModelSerializer):
-     Order=OrderSerializer(read_only=True)
-     product=ProductSerializer(read_only=True)
+    # order=OrderSerializer(read_only=True)
+     #product=ProductSerializer(read_only=True)
 
      class Meta:
           model=OrderItem
           fields="__all__"
 class SubscriptionLogSerializer(serializers.ModelSerializer):
-     order=OrderSerializer(read_only=True)
+     #order=OrderSerializer(read_only=True)
 
      class Meta:
           model=SubscriptionLog

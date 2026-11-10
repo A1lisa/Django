@@ -31,7 +31,7 @@ router.register("Product", ProductViewSet, basename='Product')
 router.register("Customer", CustomerViewSet, basename='Customer')
 router.register("Order", OrderViewSet, basename='Order')
 router.register("OrderItem", OrderItemViewSet, basename='OrderItem')
-router.register("Sucscription", SubViewSet, basename='Subsription')
+router.register("Subscription", SubViewSet, basename='Subsription')
 
 
 urlpatterns = [
